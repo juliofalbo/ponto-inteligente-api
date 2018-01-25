@@ -20,7 +20,7 @@ import com.kw.pontointeligente.api.enums.TipoEnum;
 // testes
 public class LancamentoBuilder {
 
-	private List<Lancamento> lancamentos = new ArrayList<>();
+	private List<Lancamento> lancamentos = new ArrayList<Lancamento>();
 
 	private LancamentoBuilder(Lancamento lancamento) {
 		lancamentos.add(lancamento);

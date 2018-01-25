@@ -17,4 +17,10 @@ public class PasswordUtils {
 		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 		return bCryptPasswordEncoder.encode(senha);
 	}
+
+	public static Boolean gerarBCrypt(String senha, String senhaEncoded) {
+		log.info("Validando hash com o BCrypt");
+		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+		return bCryptPasswordEncoder.matches(senha, senhaEncoded);
+	}
 }

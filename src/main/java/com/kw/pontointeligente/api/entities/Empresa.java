@@ -20,7 +20,7 @@ import javax.persistence.Table;
 @Table(name = "empresa")
 public class Empresa implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 6272381560571678312L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -100,6 +100,12 @@ public class Empresa implements Serializable {
 	public void preUpdate() {
 		final Date atual = new Date();
 		this.dataAtualizacao = atual;
+	}
+
+	@Override
+	public String toString() {
+		return "Empresa [id=" + id + ", razaoSocial=" + razaoSocial + ", cnpj=" + cnpj + ", dataCriacao=" + dataCriacao
+				+ ", dataAtualizacao=" + dataAtualizacao + "]";
 	}
 	
 }

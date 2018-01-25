@@ -28,7 +28,7 @@ import com.kw.pontointeligente.api.enums.PerfilEnum;
 @Table(name = "funcionario")
 public class Funcionario implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 7789736330140876389L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -201,6 +201,14 @@ public class Funcionario implements Serializable {
 	public void preUpdate() {
 		final Date atual = new Date();
 		this.dataAtualizacao = atual;
+	}
+
+	@Override
+	public String toString() {
+		return "Funcionario [id=" + id + ", nome=" + nome + ", email=" + email + ", senha=" + senha + ", cpf=" + cpf
+				+ ", valorHora=" + valorHora + ", qtdHorasTrabalhoDia=" + qtdHorasTrabalhoDia + ", qtdHorasAlmoco="
+				+ qtdHorasAlmoco + ", perfil=" + perfil + ", dataCriacao=" + dataCriacao + ", dataAtualizacao="
+				+ dataAtualizacao + "]";
 	}
 
 }

@@ -17,15 +17,15 @@ import com.kw.pontointeligente.api.entities.Empresa;
 // testes
 public class EmpresaBuilder {
 
-	private List<Empresa> empresas = new ArrayList<>();
+	private List<Empresa> empresas = new ArrayList<Empresa>();
 
 	private EmpresaBuilder(Empresa empresa) {
 		empresas.add(empresa);
 
 	}
 
-	public static EmpresaBuilder newEmpresa(String nome, String cnpj) {
-		Empresa empresa = create(nome, cnpj);
+	public static EmpresaBuilder newEmpresa(String razaoSocial, String cnpj) {
+		Empresa empresa = create(razaoSocial, cnpj);
 		return new EmpresaBuilder(empresa);
 	}
 
@@ -34,9 +34,9 @@ public class EmpresaBuilder {
 		return new EmpresaBuilder(empresa);
 	}
 
-	private static Empresa create(String nome, String cnpj) {
+	private static Empresa create(String razaoSocial, String cnpj) {
 		Empresa empresa = new Empresa();
-		empresa.setRazaoSocial(nome);
+		empresa.setRazaoSocial(razaoSocial);
 		empresa.setCnpj(cnpj);
 		return empresa;
 	}
