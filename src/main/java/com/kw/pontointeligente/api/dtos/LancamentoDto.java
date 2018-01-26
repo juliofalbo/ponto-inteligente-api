@@ -10,6 +10,7 @@ public class LancamentoDto {
 
 	@NotEmpty(message = "Data não pode ser vazia.")
 	private String data;
+	
 	private String tipo;
 	private String descricao;
 	private String localizacao;

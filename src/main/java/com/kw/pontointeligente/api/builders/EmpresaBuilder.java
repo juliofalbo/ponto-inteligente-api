@@ -24,18 +24,24 @@ public class EmpresaBuilder {
 
 	}
 
+	public static EmpresaBuilder newEmpresa(Long id, String razaoSocial, String cnpj) {
+		Empresa empresa = create(id, razaoSocial, cnpj);
+		return new EmpresaBuilder(empresa);
+	}
+	
 	public static EmpresaBuilder newEmpresa(String razaoSocial, String cnpj) {
-		Empresa empresa = create(razaoSocial, cnpj);
+		Empresa empresa = create(null, razaoSocial, cnpj);
 		return new EmpresaBuilder(empresa);
 	}
 
 	public static EmpresaBuilder newEmpresa() {
-		Empresa empresa = create("Empresa Test", "51463645000100");
+		Empresa empresa = create(null, "Empresa Test", "51463645000100");
 		return new EmpresaBuilder(empresa);
 	}
 
-	private static Empresa create(String razaoSocial, String cnpj) {
+	private static Empresa create(Long id, String razaoSocial, String cnpj) {
 		Empresa empresa = new Empresa();
+		empresa.setId(id);
 		empresa.setRazaoSocial(razaoSocial);
 		empresa.setCnpj(cnpj);
 		return empresa;
@@ -44,7 +50,7 @@ public class EmpresaBuilder {
 	public EmpresaBuilder more(int number) {
 		Empresa base = empresas.get(0);
 		for (int i = 0; i < number; i++) {
-			empresas.add(create("Empresa Test " + i, base.getCnpj()));
+			empresas.add(create(null, "Empresa Test " + i, base.getCnpj()));
 		}
 		return this;
 	}

@@ -27,30 +27,40 @@ public class LancamentoBuilder {
 
 	}
 
+	public static LancamentoBuilder newLancamento(Long id, Date data, TipoEnum tipo, Long idFuncionario) {
+		Funcionario funcionario = new Funcionario();
+		funcionario.setId(idFuncionario);
+		Lancamento lancamento = create(id, data, "Descrição", "Localização", tipo, funcionario);
+		return new LancamentoBuilder(lancamento);
+	}
+
 	public static LancamentoBuilder newLancamento(Date data, String descricao, String localizacao, TipoEnum tipo,
 			Funcionario funcionario) {
-		Lancamento lancamento = create(data, descricao, localizacao, tipo, funcionario);
+		Lancamento lancamento = create(null, data, descricao, localizacao, tipo, funcionario);
 		return new LancamentoBuilder(lancamento);
 	}
 
 	public static LancamentoBuilder newLancamento(TipoEnum tipo, Funcionario funcionario) {
-		Lancamento lancamento = create(new Date(), "Descrição Test", "Localização Test", tipo, funcionario);
-		return new LancamentoBuilder(lancamento);
-	}
-	
-	public static LancamentoBuilder newLancamento(Date data, TipoEnum tipo, Funcionario funcionario) {
-		Lancamento lancamento = create(data, "Descrição Test", "Localização Test", tipo, funcionario);
+		Lancamento lancamento = create(null, new Date(), "Descrição Test", "Localização Test", tipo, funcionario);
 		return new LancamentoBuilder(lancamento);
 	}
 
-	private static Lancamento create(Date data, String descricao, String localizacao, TipoEnum tipo,
+	public static LancamentoBuilder newLancamento(Date data, TipoEnum tipo, Funcionario funcionario) {
+		Lancamento lancamento = create(null, data, "Descrição Test", "Localização Test", tipo, funcionario);
+		return new LancamentoBuilder(lancamento);
+	}
+
+	private static Lancamento create(Long id, Date data, String descricao, String localizacao, TipoEnum tipo,
 			Funcionario funcionario) {
+
 		Lancamento lancamento = new Lancamento();
+		lancamento.setId(id);
 		lancamento.setData(data);
 		lancamento.setDescricao(descricao);
 		lancamento.setLocalizacao(localizacao);
 		lancamento.setTipo(tipo);
 		lancamento.setFuncionario(funcionario);
+
 		return lancamento;
 	}
 
